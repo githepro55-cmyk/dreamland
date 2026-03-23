@@ -1,5 +1,5 @@
 import { readFile } from "node:fs/promises";
-import { cheerio } from "cheerio";
+import { load } from "cheerio";
 
 async function loadProducts() {
   const fileUrl = new URL("../../products.json", import.meta.url);
@@ -52,7 +52,7 @@ async function checkProduct(product) {
   });
 
   const html = await res.text();
-  const $ = cheerio.load(html);
+  const $ = load(html);
   const title = $("title").text().trim() || product.name;
   const text = $("body").text();
   const state = detectStock(text);
