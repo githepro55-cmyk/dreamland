@@ -1,5 +1,5 @@
 import { readFile } from "node:fs/promises";
-import { cheerio } from "cheerio";
+import { load } from "cheerio";
 
 export const config = {
   schedule: "*/5 * * * *"
@@ -73,7 +73,7 @@ async function checkProduct(product) {
   });
 
   const html = await res.text();
-  const $ = cheerio.load(html);
+  const $ = load(html);
   const title = $("title").text().trim() || product.name;
   const text = $("body").text();
   const state = detectStock(text);
@@ -116,3 +116,4 @@ export default async () => {
     headers: { "content-type": "application/json" }
   });
 };
+
