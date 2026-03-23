@@ -1,0 +1,12 @@
+{
+  "name": "dreamland-netlify-monitor",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "netlify dev"
+  },
+  "dependencies": {
+    "@netlify/functions": "^2.8.2",
+    "cheerio": "^1.0.0"
+  }
+}
